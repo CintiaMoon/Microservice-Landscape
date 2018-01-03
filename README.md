@@ -1,37 +1,12 @@
-## Welcome to GitHub Pages
+## Microservices architecture based on Spring Cloud
 
-You can use the [editor on GitHub](https://github.com/CintiaMoon/Microservice-Landscape/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
+This project is a microservices project based on frameworks such as Spring Boot, Spring Cloud, Spring Oauth2 and Spring Cloud Netflix.
 ### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- ***Service Discovery Server (Netflix Eureka)**: Service Discovery Server Netflix Eureka allows micro services to register themselves at runtime as they appear in the system landscape.
 
-```markdown
-Syntax highlighted code block
+- **Dynamic Routing and Load Balancer (Netflix Ribbon)**: It uses the information available in Eureka to locate appropriate service instances. If more than one instance is found, Ribbon will apply load balancing to spread the requests over the available instances.
 
-# Header 1
-## Header 2
-### Header 3
+-**Edge Server (Netflix Zuul)**: It prevents any unauthorized external requests pass through. Zuul uses Ribbon to lookup available services and routes the external request to an appropriate service instance.
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/CintiaMoon/Microservice-Landscape/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
