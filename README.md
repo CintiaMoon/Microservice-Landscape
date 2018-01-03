@@ -1,7 +1,8 @@
 ## Microservices architecture based on Spring Cloud
 
 This project is a microservices project based on frameworks such as Spring Boot, Spring Cloud, Spring Oauth2 and Spring Cloud Netflix.
-### Markdown
+
+### Components
 
 - **Service Discovery Server (Netflix Eureka)**: Service Discovery Server Netflix Eureka allows micro services to register themselves at runtime as they appear in the system landscape.
 
