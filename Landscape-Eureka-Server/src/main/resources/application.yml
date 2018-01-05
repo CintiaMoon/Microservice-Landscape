@@ -1,0 +1,14 @@
+#logging:
+#  path: logs
+#  logging:
+#    file :  logs/Landscape-Eureka-Server.log		
+#    logging:
+#      pattern.file : '%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n'
+
+logging:
+  file: logs/Landscape-Eureka-Server.log    
+  pattern:
+    file: '%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n'
+  level:
+    org.springframework.web: INFO
+    com.cargain.micro.landscape.config: DEBUG
