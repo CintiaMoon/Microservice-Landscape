@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: Landscape-Hystrix-Dashboard
+  
+  cloud:
+    config:
+      uri: http://localhost:8888
+      
+
+#logging:
+#  level:
+#    root: debug
+logging:
+  file: logs/Landscape-Hystrix-Dashboard.log    
+  pattern:
+    file: '%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n'
+  level:
+    root: debug
