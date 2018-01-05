@@ -15,13 +15,17 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 public class MessageService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MessageService.class);
 
+	
+	@Value("${title}")
+	private String title;
+	
 	@Value("${message}")
 	private String message;
 
 	private RestTemplate restTemplate = new RestTemplate();
 
 	public String getMessage() {
-		return message;
+		return title + " --- " + message;
 	}
 
 	/**
