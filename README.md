@@ -10,4 +10,14 @@ This project is a microservices project based on frameworks such as Spring Boot,
 
 -**Edge Server (Netflix Zuul)**: It prevents any unauthorized external requests pass through. Zuul uses Ribbon to lookup available services and routes the external request to an appropriate service instance.
 
+localhost:7979/hystrix
 
+
+URLs for the microservices
+---------------------------
+curl -s localhost:8050/message/enable-CB
+curl localhost:8050/message/client-message
+
+Useful Resources
+------------------------------------
+Tool used for drawing the landscape: https://www.draw.io/

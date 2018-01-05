@@ -1,22 +1,14 @@
-# spring.cloud.config.server.git.uri=https://github.com/CintiaMoon/Microservice-Landscape/Landscape-config-repo
 spring:
   cloud:
-    config:
+   config:
       server:
-        git.uri : file:/workspaces/Technologies/Microservice-Landscape/Microservice-Landscape/Landscape-config-repo
+        git.uri : file:/temp/monitoring/Landscape-config-repo
+        #git.uri : https://github.com/CintiaMoon/Landscape-config-repo.git
 
 server:
   port: 8888
 
-
-#logging:
-#  path: logs
-#  logging:
-#    file :  logs/Landscape-Config-Server.log		
-#    logging:
-#      pattern.file : '%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n'
-
-      
+     
 logging:
   file: logs/Landscape-Config-Server.log    
   pattern:
@@ -24,4 +16,4 @@ logging:
   level:
     org.springframework.web: INFO
     com.cargain.micro.landscape.config: DEBUG
-    
+

@@ -7,9 +7,6 @@ spring:
       uri: http://localhost:8888
       
 
-#logging:
-#  level:
-#    root: debug
 logging:
   file: logs/Landscape-Service-Server.log    
   pattern:

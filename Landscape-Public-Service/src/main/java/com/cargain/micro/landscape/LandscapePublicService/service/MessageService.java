@@ -23,7 +23,8 @@ public class MessageService {
 	private String message;
 
 	private RestTemplate restTemplate = new RestTemplate();
-
+	
+	@HystrixCommand(fallbackMethod = "getMessageFallback")
 	public String getMessage() {
 		return title + " --- " + message;
 	}
@@ -39,11 +40,10 @@ public class MessageService {
 		try {
 			uri = new URI("http://localhost:8080/message");
 		} catch (URISyntaxException e) {
-			
+		  LOGGER.error("The URI was not properly formed");
 		}
 		String url = uri.toString() + "/message/";
-		LOGGER.debug("GetProduct from URL: {}", url);
-
+		LOGGER.debug("getMessageCB from URL: {}", url);
 		restTemplate.getForEntity(url, String.class);
 
 		return "Trigger Circuit Breaker";

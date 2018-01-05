@@ -14,3 +14,4 @@ public class LandscapePublicServiceApplication {
 		SpringApplication.run(LandscapePublicServiceApplication.class, args);
 	}
 }
+

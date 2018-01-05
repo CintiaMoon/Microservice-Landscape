@@ -4,4 +4,7 @@ spring:
 
   cloud:
     config:
+      #Take configuration from the Spring Cloud Config component
       uri : http://localhost:8888
+      
+      
