@@ -1,0 +1,7 @@
+spring:
+  application:
+    name : landscape-data-seeder
+
+  cloud:
+    config:
+      uri : http://localhost:8888
