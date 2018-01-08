@@ -13,11 +13,21 @@ This project is a microservices project based on frameworks such as Spring Boot,
 localhost:7979/hystrix
 
 
-URLs for the microservices
+URLs for the microservices (Without ZUUL)
 ---------------------------
 curl -s localhost:8050/message/enable-CB
 curl localhost:8050/message/client-message
 
+URLs for the microservices (With ZUUL)
+------------------------------------------
+http://localhost:9090/api/landscape-public-service/message/client-message	Service auto registered from Eureka (when ignoredServices: '*' is enabled, it won't work)
+
+http://localhost:9090/api/Public-Service-by-address/message/client-message	Service registered by address
+http://localhost:9090/api/Public-Service-by-service/message/client-message	Service registered by Eureka service id
+http://localhost:9090/routes?format=details 								Display all available Routes (services)
+
+
 Useful Resources
 ------------------------------------
 Tool used for drawing the landscape: https://www.draw.io/
+https://www.slideshare.net/OrkhanGassymov/spring-cloud-why-how-what
