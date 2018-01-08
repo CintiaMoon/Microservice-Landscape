@@ -1,0 +1,38 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: Landscape-Edge-Server
+    
+logging:
+  file: logs/Landscape-Edge-Server.log    
+  pattern:
+    file: '%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n'
+  level:
+    root: debug
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+     
+## Added to avoid the 401(Unauthorized) when opening url /routes
+endpoints:
+  routes:
+    sensitive: false
+      
+zuul:
+  #Service will be mapped under the /api URI
+  prefix: /api
+#  Uncomment to disable auto-registering all services read from Eureka
+  ignoredServices: '*'
+  routes:
+    Public-Service-by-address:
+      path: /Public-Service-by-address/**
+      url: http://localhost:8050
+      
+    Public-Service-service:
+      path: /Public-Service-by-service/**
+      serviceId: Landscape-Public-Service
+      
