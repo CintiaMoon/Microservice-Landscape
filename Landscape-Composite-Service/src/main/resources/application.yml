@@ -1,0 +1,17 @@
+
+#Comment the following lines to enable authentication when using actuator endpoints
+management: 
+  security:
+    enabled : false
+
+# http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-endpoints
+endpoints:
+  enabled: false
+  info:
+    enabled: true
+  health:
+    enabled: true
+  metrics:
+    enabled: true
+  refresh:
+    enabled: true  

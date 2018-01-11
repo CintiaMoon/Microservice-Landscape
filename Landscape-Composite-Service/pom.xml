@@ -6,7 +6,7 @@
 	<artifactId>Landscape-Composite-Service</artifactId>
 	<packaging>jar</packaging>
 
-	<name>Landcape-Public-Service</name>
+	<name>Landscape-Composite-Service</name>
 
 	<parent>
 		<groupId>com.cargain.micro.landscape</groupId>
@@ -32,6 +32,11 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-hystrix</artifactId>
 		</dependency>
+		
+		 <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
+        </dependency>
 
 	</dependencies>
 
