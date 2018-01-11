@@ -89,7 +89,11 @@
 	<modules>
 		<module>Landscape-Config-Server</module>
 		<module>Landscape-Eureka-Server</module>
-		<module>Landscape-Private-Service</module>
-		<module>Landscape-Public-Service</module>
+		<module>Landscape-User-Service</module>
+		<module>Landscape-Composite-Service</module>
+		
+		<module>Landscape-Data-seeder</module>
+		<module>Landscape-Edge-Server</module>
+		<module>Landscape-Hystrix-Dashboard</module>
 	</modules>
 </project>

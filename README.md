@@ -1,4 +1,4 @@
-## Microservices architecture based on Spring Cloud
+*## Microservices architecture based on Spring Cloud
 
 This project is a microservices project based on frameworks such as Spring Boot, Spring Cloud, Spring Oauth2 and Spring Cloud Netflix.
 
@@ -12,18 +12,33 @@ This project is a microservices project based on frameworks such as Spring Boot,
 
 localhost:7979/hystrix
 
+## Url to check configuration
+http://localhost:8888/Landscape-Composite-Service/dev
 
 URLs for the microservices (Without ZUUL)
 ---------------------------
-curl -s localhost:8050/message/enable-CB
-curl localhost:8050/message/client-message
+curl localhost:8050/message/delayed-response
+curl localhost:8060/user/all
 
+## URL with Ribbon (Without ZUUL)
+curl http://localhost:8050/all
+
+To refresh the variables loaded from properties (Composite-Service):
+curl -v -d {} localhost:8050/refresh
+
+
+----------------------------------------------
 URLs for the microservices (With ZUUL)
 ------------------------------------------
-http://localhost:9090/api/landscape-public-service/message/client-message	Service auto registered from Eureka (when ignoredServices: '*' is enabled, it won't work)
+http://localhost:9090/api/Landscape-User-service/message/delayed-response	Service auto registered from Eureka (when ignoredServices: '*' is enabled, it won't work)
 
-http://localhost:9090/api/Public-Service-by-address/message/client-message	Service registered by address
-http://localhost:9090/api/Public-Service-by-service/message/client-message	Service registered by Eureka service id
+http://localhost:9090/api/Composite-Service-by-address/all
+
+
+
+-- Services that show Hystrix
+http://localhost:9090/api/Composite-Service-by-address/message/delayed-response	Service registered by address
+http://localhost:9090/api/Composite-Service-by-service/message/delayed-response	Service registered by Eureka service id
 http://localhost:9090/routes?format=details 								Display all available Routes (services)
 
 
