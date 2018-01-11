@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Landscape-Private-Service
+    name: Landscape-User-Service
   
   cloud:
     config:
@@ -11,7 +11,7 @@ spring:
 #  level:
 #    root: debug
 logging:
-  file: logs/Landscape-Private-Server.log    
+  file: logs/Landscape-User-Server.log    
   pattern:
     file: '%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n'
   level:

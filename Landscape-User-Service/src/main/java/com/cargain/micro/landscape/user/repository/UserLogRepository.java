@@ -1,11 +1,11 @@
-package com.cargain.micro.landscape.LandscapePrivateService.repository;
+package com.cargain.micro.landscape.user.repository;
 
 import java.util.Collection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
-import com.cargain.micro.landscape.LandscapePrivateService.model.UserLog;
+import com.cargain.micro.landscape.user.model.UserLog;
 
 @RepositoryRestResource // Spring automatically creates REST representations from the UserLog JPA
                         // Entity class

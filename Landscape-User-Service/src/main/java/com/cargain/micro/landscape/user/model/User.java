@@ -1,4 +1,4 @@
-package com.cargain.micro.landscape.LandscapePrivateService.model;
+package com.cargain.micro.landscape.user.model;
 
 import javax.persistence.*;
 import java.util.List;

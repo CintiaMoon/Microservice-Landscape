@@ -1,18 +1,21 @@
-package com.cargain.micro.landscape.LandscapePrivateService;
+package com.cargain.micro.landscape.user;
 
 import java.util.Arrays;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
-import com.cargain.micro.landscape.LandscapePrivateService.model.User;
-import com.cargain.micro.landscape.LandscapePrivateService.model.UserLog;
+import com.cargain.micro.landscape.user.model.User;
+import com.cargain.micro.landscape.user.model.UserLog;
 
 
-public class PrivateServiceRestClientTool {
+public class UserServiceRestClientTool {
 
   private String baseURL = "http://localhost:8060";
 
+  /**
+   * 
+   */
   public void addUsersContact() {
     
     HttpHeaders headers = new HttpHeaders();
@@ -31,16 +34,14 @@ public class PrivateServiceRestClientTool {
     user1.setOrganization("R&D")
         .setName("Mark")
         .setUsersLogs(Arrays.asList(usersLog, usersLog2));
- 
-
-       
+        
     HttpEntity<User> requestEntity = new HttpEntity<User>(user1, headers);
     restTemplate.postForLocation(url, requestEntity);
 
   }
 
   public static void main(String args[]) {
-    PrivateServiceRestClientTool util = new PrivateServiceRestClientTool();
+    UserServiceRestClientTool util = new UserServiceRestClientTool();
     util.addUsersContact();
     // util.getUserByIdDemo();
     // util.getAllUsersDemo();

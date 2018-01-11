@@ -1,30 +1,31 @@
-package com.cargain.micro.landscape.LandscapePrivateService.controller;
+package com.cargain.micro.landscape.user.controller;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/message")
+@RefreshScope //Used to refresh values retrieved from Config server
 public class MessageController {
+  private static final Logger LOGGER = LoggerFactory.getLogger(MessageController.class);
 
-  @Value("${message:HOLALA}")
+  @Value("${message:Message_Configured_As_a_Default}")
   private String message;
-
-
-  @RequestMapping(path = "/private-message", method = RequestMethod.GET)
-  public String getMessage() {
-
-
-    List<String> greetings = Arrays.asList("Hi there", "Greetings", "Salutations");
-    Random rand = new Random();
-    int randomNum = rand.nextInt(greetings.size());
-    String returnMessage = message + greetings.get(randomNum);
-
-    return returnMessage;
+  
+  @RequestMapping(path = "/delayed-response", method = RequestMethod.GET)
+  public String delayedResponse(){
+    
+    LOGGER.info("---------------------- DELAYING RESPONSE TO TRIGGER A FALLBACK -------------------");
+    try {
+      Thread.sleep(5000);
+    } catch (InterruptedException e) {
+      LOGGER.error("Error throw on purpose.");
+    }    
+    return message;
   }
 }

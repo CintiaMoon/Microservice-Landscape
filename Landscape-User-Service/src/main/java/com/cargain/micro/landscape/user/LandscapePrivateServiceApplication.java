@@ -1,4 +1,4 @@
-package com.cargain.micro.landscape.LandscapePrivateService;
+package com.cargain.micro.landscape.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

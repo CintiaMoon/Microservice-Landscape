@@ -6,7 +6,7 @@
 	<artifactId>Landscape-User-Service</artifactId>
 	<packaging>jar</packaging>
 
-	<name>Landscape-Private-Service</name>
+	<name>Landscape-User-Service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
