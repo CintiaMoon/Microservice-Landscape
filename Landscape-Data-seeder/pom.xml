@@ -6,7 +6,6 @@
 
 	<groupId>com.avaya.ept.landscape</groupId>
 	<artifactId>Landscape-Data-seeder</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<parent>
