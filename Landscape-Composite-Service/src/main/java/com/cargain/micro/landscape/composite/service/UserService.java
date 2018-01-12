@@ -13,11 +13,18 @@ import org.springframework.web.client.RestTemplate;
 import com.cargain.micro.landscape.composite.dto.User;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
+/**
+ * It shows how to use RestTemplate to load balance requests to an Eureka-registered service using
+ * Ribbon.
+ * 
+ * @author cargain
+ *
+ */
 @Component
 public class UserService {
   private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
-  
+
   @Value("${userServiceUrl}")
   private String userServiceUrl;
 
