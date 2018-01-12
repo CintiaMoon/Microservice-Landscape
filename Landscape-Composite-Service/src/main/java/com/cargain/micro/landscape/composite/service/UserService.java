@@ -1,5 +1,7 @@
 package com.cargain.micro.landscape.composite.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,9 +26,11 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 public class UserService {
   private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
-
   @Value("${userServiceUrl}")
   private String userServiceUrl;
+  
+  @Value("${delayedMessage}")
+  private String delayedMessage;
 
   @Autowired
   RestTemplate restTemplate;
@@ -37,28 +41,61 @@ public class UserService {
     return new RestTemplate();
   }
 
-  @HystrixCommand(fallbackMethod = "getAllUserNamesHarcoded")
-  public ResponseEntity<User[]> getAllUserNames() {
+  /**
+   * 
+   * @return
+   */
+  @HystrixCommand(fallbackMethod = "getAllFallback")
+  public List<User> getAll() {
 
-    String url = userServiceUrl + "/user/all";
+    String url = userServiceUrl + "/all";
     LOGGER.info("##### Invoking private service using URL:  " + url);
     ResponseEntity<User[]> responseEntity = restTemplate.getForEntity(url, User[].class);
 
-    return responseEntity;
+    return Arrays.asList(responseEntity.getBody());
   }
 
-  public ResponseEntity<User[]> getAllUserNamesHarcoded() {
+  public List<User> getAllFallback() {
     LOGGER.info(
-        "------------------------ USING FALLBACK METHOD :  getAllUserNamesHarcoded -----------------");
-    return null;
+        "------------------------ USING FALLBACK METHOD :  getAllFallback -----------------");
+    User user = new User();
+    user.setId(999);
+    user.setName("John");
+    user.setOrganization("FallBack");
+    ArrayList<User> users = new ArrayList<User>();
+    users.add(user);
+    return users;
   }
 
 
+  /**
+   * 
+   * @return
+   */
+  @HystrixCommand(fallbackMethod = "getFilteredUsersWithDelay")
+  public String getFilteredUsers() {
+    String urlToInvoke = userServiceUrl + "/delayed-response";
+    LOGGER.info("--- URL To Invoke: " + urlToInvoke);
 
-  public List<User> getAll() {
-    ResponseEntity<List> forEntity =
-        restTemplate.getForEntity("http://LANDSCAPE-USER-SERVICE/user/all", List.class);
-    return forEntity.getBody();
+    LOGGER.info("----- Attempting to trigger Circuit Breaker -------");
+
+    ResponseEntity<String> response = this.restTemplate.getForEntity(urlToInvoke, String.class);
+    
+    return response.getBody();
+  }
+
+  /**
+   * 
+   * @return
+   */
+  public String getFilteredUsersWithDelay() {
+    
+    LOGGER.info("###### USING FALLBACK METHOD: getFallbackMethodForDelayedResponse -----------");
+    LOGGER.info("------ RETURNING VALUE READ FROM CONFIGURATION: " + delayedMessage);
+    LOGGER.info("###### USING FALLBACK METHOD: getFallbackMethodForDelayedResponse -----------");
+    
+    return delayedMessage;
+
   }
 
 }
